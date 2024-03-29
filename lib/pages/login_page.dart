@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:reminder_app/widgets/grey_text.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -61,14 +63,19 @@ class _LoginPageState extends State<LoginPage> {
             color: Colors.white,
             size: 80,
           ),
-          Text(
-            'REMINDER',
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 36,
-              letterSpacing: 2,
-            ),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'YOUR REMINDER',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 36,
+                  letterSpacing: 2,
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -148,11 +155,12 @@ class _LoginPageState extends State<LoginPage> {
                     rememberUser = value!;
                   });
                 }),
-            GreyText(text: "Remember Me"),
+            const GreyText(text: "Remember Me"),
           ],
         ),
         TextButton(
-            onPressed: () {}, child: GreyText(text: "I forgot my password")),
+            onPressed: () {},
+            child: const GreyText(text: "I forgot my password")),
       ],
     );
   }
@@ -179,7 +187,7 @@ class _LoginPageState extends State<LoginPage> {
     return Center(
       child: Column(
         children: [
-          GreyText(text: "Or Continue With"),
+          const GreyText(text: "Or Continue With"),
           const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -194,4 +202,3 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-

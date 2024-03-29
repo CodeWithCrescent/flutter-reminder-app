@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "Flutter",
+            "program": "lib/main.dart",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "Flutter (SM G973U)",
+            "program": "lib/main.dart",
+            "deviceId": "RF8M21T1QRF",
+            "request": "launch",
+            "type": "dart"
+        }
+    ]
+}

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:reminder_app/pages/home_page.dart';
+import 'package:reminder_app/utils/constants.dart';
 import 'package:reminder_app/widgets/grey_text.dart';
+import 'package:reminder_app/widgets/login_tab_bar.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -9,8 +13,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  late Color myColor;
-
   late Size mediaSize;
 
   TextEditingController emailController = TextEditingController();
@@ -21,7 +23,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    myColor = Theme.of(context).primaryColor;
     mediaSize = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
@@ -168,8 +169,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget _buildLoginButton() {
     return ElevatedButton(
       onPressed: () {
-        debugPrint("Email : ${emailController.text}");
-        debugPrint("Password : ${passwordController.text}");
+        Get.to(() => HomePage());
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: myColor,
@@ -184,17 +184,34 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _buildOtherLoginMethods() {
-    return Center(
+    return const Center(
       child: Column(
         children: [
-          const GreyText(text: "Or Continue With"),
-          const SizedBox(height: 10),
+          Row(
+            children: [
+              Expanded(
+                child: Divider(
+                  thickness: 0.5,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10.0),
+                child: GreyText(text: "Or Continue With"),
+              ),
+              Expanded(
+                child: Divider(
+                  thickness: 0.5,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Tab(icon: Image.asset('assets/logo/facebook-144.png')),
-              Tab(icon: Image.asset('assets/logo/google-144.png')),
-              Tab(icon: Image.asset('assets/logo/twitterx-144.png')),
+              LoginTabBar(iconPath: 'assets/logo/facebook-144.png'),
+              LoginTabBar(iconPath: 'assets/logo/google-144.png'),
+              LoginTabBar(iconPath: 'assets/logo/twitterx-144.png'),
             ],
           ),
         ],
